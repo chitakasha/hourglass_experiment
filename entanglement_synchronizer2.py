@@ -60,18 +60,6 @@ def mbqc_interpreter(final_results, algorithm):
     # Placeholder for MBQC interpretation
     return final_results
 
-def initialize_resource_state():
-    num_qubits = get_num_qubits()
-    qubits = []
-    for i in range(num_qubits):
-        qubit = Qubit(0)
-        qubits.append(qubit)
-    for i in range(num_qubits - 1):
-        current_qubit = qubits[i]
-        next_qubit = qubits[i + 1]
-        current_qubit.cnot(next_qubit)
-    return qubits
-
 def determine_measurement_sequence():
     algorithm = get_algorithm()
     measurement_sequence = []
