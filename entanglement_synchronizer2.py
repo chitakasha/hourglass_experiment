@@ -77,7 +77,7 @@ def determine_measurement_sequence():
     return measurement_sequence
 
 def manage_entanglement():
-    resource_state = initialize_resource_state()
+    resource_state = initialize_resource_state(4)
     measurement_sequence = determine_measurement_sequence()
     for qubit in resource_state:
         qubit.rotate(get_phase())
