@@ -1,17 +1,6 @@
 from qiskit import QuantumCircuit, QuantumRegister, Aer, execute
 import quantum_state_monitor
 
-def initialize_resource_state(num_qubits):
-    # Create a QuantumRegister with num_qubits
-    qr = QuantumRegister(num_qubits)
-
-    # Now you can access each qubit in the register like this:
-    for i in range(num_qubits):
-        qubit = qr[i]
-        # Do something with qubit
-
-    return qr
-
 class EntanglementSynchronizer:
     def __init__(self, num_qubits):
         self.num_qubits = num_qubits
@@ -59,6 +48,17 @@ def has_error(qubit):
 def mbqc_interpreter(final_results, algorithm):
     # Placeholder for MBQC interpretation
     return final_results
+
+def initialize_resource_state(num_qubits):
+    # Create a QuantumRegister with num_qubits
+    qr = QuantumRegister(num_qubits)
+
+    # Now you can access each qubit in the register like this:
+    for i in range(num_qubits):
+        qubit = qr[i]
+        # Do something with qubit
+
+    return qr
 
 def determine_measurement_sequence():
     algorithm = get_algorithm()
