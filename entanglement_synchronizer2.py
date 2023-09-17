@@ -4,21 +4,18 @@ import quantum_state_monitor
 class EntanglementSynchronizer:
     def __init__(self, num_qubits):
         self.num_qubits = num_qubits
-        self.resource_state = QuantumRegister(self.num_qubits, 'q')
-        self.circuit = QuantumCircuit(self.resource_state)
+        self.resource_state = [i for i in range(num_qubits)]
+        self.circuit = QuantumCircuit(self.num_qubits)
 
-    def prepare_resource_state(self):
-        # Apply Hadamard gate to all qubits to create superposition
-        for qubit in range(self.num_qubits):
-            self.circuit.h(self.resource_state[qubit])
+def prepare_resource_state(self):
+    # Apply a Hadamard gate to each qubit except the last one
+    for i in range(self.num_qubits - 1):
+        self.circuit.h(i)
+        
+    # Apply a controlled-not gate between each pair of adjacent qubits
+    for i in range(self.num_qubits - 1):
+        self.circuit.cx(i, i + 1)
 
-        # Create entanglement between adjacent qubits
-        for qubit in range(self.num_qubits - 1):
-            self.circuit.cx(self.resource_state[qubit], self.resource_state[qubit + 1])
-
-        # Optionally, you can add more complex entanglement here
-
-        return self.circuit
 
 class Qubit:
     # Placeholder class definition for Qubit
