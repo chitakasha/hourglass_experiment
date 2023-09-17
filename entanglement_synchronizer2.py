@@ -28,10 +28,6 @@ def prepare_resource_state(self):
         self.circuit.cx(i, i + 1)
 
 
-class Qubit:
-    # Placeholder class definition for Qubit
-    pass
-
 def get_num_qubits():
     # Placeholder for getting the number of qubits
     return 10
