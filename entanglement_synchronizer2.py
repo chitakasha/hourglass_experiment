@@ -30,52 +30,51 @@ class EntanglementSynchronizer:
 
         # Return the updated resource state as a list of qubits
         return resource_state
-
-
-def prepare_resource_state(self):
-    # Apply a Hadamard gate to each qubit except the last one
+        
+     def prepare_resource_state(self):
+        # Apply a Hadamard gate to each qubit except the last one
             for i in range(self.num_qubits - 1):
         self.circuit.h(i)
         
-    # Apply a controlled-not gate between each pair of adjacent qubits
+        # Apply a controlled-not gate between each pair of adjacent qubits
             for i in range(self.num_qubits - 1):
         self.circuit.cx(i, i + 1)
 
-def get_num_qubits():
-    # Placeholder for getting the number of qubits
-    return 4
+        def get_num_qubits():
+        # Placeholder for getting the number of qubits
+        return 4
 
-def get_algorithm():
-    # Placeholder for getting the algorithm
-    return []
+        def get_algorithm():
+        # Placeholder for getting the algorithm
+        return []
 
-def measure_qubit(index, basis):
-    # Placeholder for measuring a qubit
-    return 0
+        def measure_qubit(index, basis):
+        # Placeholder for measuring a qubit
+        return 0
 
-def get_phase():
-    # Placeholder for getting the phase
-    return 0
+        def get_phase():
+        # Placeholder for getting the phase
+        return 0
 
-def get_noise():
-    # Placeholder for getting the noise
-    return 0
+        def get_noise():
+        # Placeholder for getting the noise
+        return 0
 
-def get_correction():
-    # Placeholder for getting the correction
-    return 0
+        def get_correction():
+        # Placeholder for getting the correction
+        return 0
 
-def has_error(qubit):
-    # Placeholder for error detection
-    return False
+        def has_error(qubit):
+        # Placeholder for error detection
+        return False
 
-def mbqc_interpreter(final_results, algorithm):
-    # Placeholder for MBQC interpretation
-    return final_results
+        def mbqc_interpreter(final_results, algorithm):
+        # Placeholder for MBQC interpretation
+        return final_results
 
 def initialize_resource_state(num_qubits):
     # Create a QuantumRegister with num_qubits
-    qr = QuantumRegister(num_qubits)
+        qr = QuantumRegister(num_qubits)
 
     # Now you can access each qubit in the register like this:
     for i in range(num_qubits):
@@ -99,7 +98,6 @@ def determine_measurement_sequence():
         outcome = measure_qubit(index, basis)
         previous_outcome = outcome
     return measurement_sequence
-
 
 def handle_errors():
     updated_state = manage_entanglement()
