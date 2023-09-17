@@ -107,14 +107,13 @@ def interpret_output():
     return output
 
 # Main Execution
-initialize_resource_state()
+initialize_resource_state(4)
 measurement_sequence = determine_measurement_sequence()
 for qubit in measurement_sequence:
     manage_entanglement(qubit)
 handle_errors()
 output = interpret_output()
 quantum_state_monitor.provide_real_time_feedback()
-
 
 
 if __name__ == "__main__":
