@@ -1,11 +1,36 @@
 from qiskit import QuantumCircuit, QuantumRegister, Aer, execute
 import quantum_state_monitor
+from math import pi
 
 class EntanglementSynchronizer:
     def __init__(self, num_qubits):
         self.num_qubits = num_qubits
         self.resource_state = [i for i in range(num_qubits)]
         self.circuit = QuantumCircuit(self.num_qubits)
+
+    def manage_entanglement(self):
+        # Get the current resource state from initialize_resource_state()
+        resource_state = self.initialize_resource_state()
+        # Get the current measurement sequence from determine_measurement_sequence()
+        measurement_sequence = self.determine_measurement_sequence()
+        
+        # Loop over the qubits in the resource state
+        for i, qubit in enumerate(resource_state):
+            # Apply a rotation gate to adjust the phase of the qubit according to MBQC rules
+            phase = self.get_phase(i)  # Assuming get_phase takes the qubit index and returns the phase
+            self.circuit.rx(phase * pi, i)  # Rotate around x-axis by phase * pi
+            
+            # Apply a noise gate to simulate decoherence and other quantum errors in the qubit
+            noise = self.get_noise(i)  # Assuming get_noise takes the qubit index and returns noise level
+            # (Implement noise simulation here, if applicable)
+            
+            # Apply a correction gate to compensate for any errors in the qubit using MBQC rules
+            correction = self.get_correction(i)  # Assuming get_correction takes the qubit index and returns correction
+            self.circuit.rz(correction * pi, i)  # Rotate around z-axis by correction * pi
+
+        # Return the updated resource state as a list of qubits
+        return resource_state
+
 
 def prepare_resource_state(self):
     # Apply a Hadamard gate to each qubit except the last one
@@ -18,7 +43,7 @@ def prepare_resource_state(self):
 
 def get_num_qubits():
     # Placeholder for getting the number of qubits
-    return 10
+    return 4
 
 def get_algorithm():
     # Placeholder for getting the algorithm
@@ -56,7 +81,7 @@ def initialize_resource_state(num_qubits):
     for i in range(num_qubits):
         qubit = qr[i]
         # Do something with qubit
-
+    
     return qr
 
 def determine_measurement_sequence():
@@ -75,33 +100,6 @@ def determine_measurement_sequence():
         previous_outcome = outcome
     return measurement_sequence
 
-from math import pi
-
-class EntanglementSynchronizer:
-    # ... (existing code)
-
-    def manage_entanglement(self):
-        # Get the current resource state from initialize_resource_state()
-        resource_state = self.initialize_resource_state()
-        # Get the current measurement sequence from determine_measurement_sequence()
-        measurement_sequence = self.determine_measurement_sequence()
-        
-        # Loop over the qubits in the resource state
-        for i, qubit in enumerate(resource_state):
-            # Apply a rotation gate to adjust the phase of the qubit according to MBQC rules
-            phase = self.get_phase(i)  # Assuming get_phase takes the qubit index and returns the phase
-            self.circuit.rx(phase * pi, i)  # Rotate around x-axis by phase * pi
-            
-            # Apply a noise gate to simulate decoherence and other quantum errors in the qubit
-            noise = self.get_noise(i)  # Assuming get_noise takes the qubit index and returns noise level
-            # (Implement noise simulation here, if applicable)
-            
-            # Apply a correction gate to compensate for any errors in the qubit using MBQC rules
-            correction = self.get_correction(i)  # Assuming get_correction takes the qubit index and returns correction
-            self.circuit.rz(correction * pi, i)  # Rotate around z-axis by correction * pi
-
-        # Return the updated resource state as a list of qubits
-        return resource_state
 
 def handle_errors():
     updated_state = manage_entanglement()
@@ -123,6 +121,8 @@ def interpret_output():
     final_results = determine_measurement_sequence()
     output = mbqc_interpreter(final_results, algorithm)
     return output
+
+synchronizer = EntanglementSynchronizer(4)
 
 # Main Execution
 initialize_resource_state(4)
