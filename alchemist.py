@@ -3,7 +3,8 @@ from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit import execute, Aer
 from qiskit.tools.visualization import plot_histogram
 # No need to import Aer again
-from qiskit.tools.visualization import plot_histogram
+# No need to reimport plot_histogram
+# from qiskit.tools.visualization import plot_histogram
 
 
 
