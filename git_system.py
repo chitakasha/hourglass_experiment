@@ -71,6 +71,12 @@ class Kernel:
         # Return best version name 
         return best_version
 
+
+def calculate_golden_ratio_score(file):
+    # calculate the score for the file based on the golden ratio
+    # ...
+    return score
+
 # create a repo object
 repo = git.Repo("C:/Users/pavel/hourglass_experiment_2/.git/")
 
@@ -87,6 +93,13 @@ agents = [Agent(f"directory_{i}") for i in np.random.randint(1000, size=10)]
 for iteration in range(100):  # 100 iterations 
     for agent in agents: 
         agent.commit(repo)  # Agents explore and commit 
-    
-    winning_branch = Kernel.select_version(repo)  # Kernel selects best version 
-    # Update beliefs, reward, and reproduction logic here 
+
+# create a kernel object
+kernel = Kernel()
+
+# call the get_feedback method with the branch name
+feedback = kernel.get_feedback(branch_name)
+
+# call the select_version method with the repo object
+best_version = kernel.select_version(repo)
+
