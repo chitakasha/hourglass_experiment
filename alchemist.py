@@ -2,13 +2,8 @@
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit import execute, Aer
 from qiskit.tools.visualization import plot_histogram
-from qiskit.tools.monitor import job_monitor
-from qiskit import IBMQ
-from qiskit import Aer
-from qiskit.tools.visualization import circuit_drawer
+# No need to import Aer again
 from qiskit.tools.visualization import plot_histogram
-import qiskit
-import numpy as np
 
 
 
@@ -196,3 +191,39 @@ result = job.result()
 counts = result.get_counts(circuit)
 # Plot the histogram of the measurement outcomes
 plot_histogram(counts)
+# Print the counts of the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
+# Print the measurement outcomes
+print(counts)
+# Print the measurement outcomes
+print(result.get_counts(circuit))
